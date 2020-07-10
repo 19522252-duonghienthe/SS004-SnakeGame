@@ -71,8 +71,22 @@ gồm các hàm định hướng lúc di chuyển, xuất hiện, di chuyển v�
 				huong = 'S';
 		}
 	}
-	void DiChuyenThan();
-	void DiChuyenDau();
+	void DiChuyenThan() {
+	duoitruoc = ToaDo[ChieuDai - 1];
+		for (int i = ChieuDai - 1; i >= 1; --i)
+			ToaDo[i] = ToaDo[i - 1];
+	}
+	void DiChuyenDau(){
+	char huong = XacDinhPhuongHuong(ToaDo[1], ToaDo[2]);
+		if (_kbhit()) {
+			int c = _getch();
+			c = _getch();
+			DoiHuong(c, huong);
+			DiThang(ToaDo[0], huong);
+		}
+		else
+			DiThang(ToaDo[0], huong);
+	}
 	void DiChuyen();
 	void XuatHien();
 	void DaAnMoi();
@@ -80,6 +94,7 @@ gồm các hàm định hướng lúc di chuyển, xuất hiện, di chuyển v�
 struct MOI {};
 /*Biểu diễn vị trí mồi
 gồm các hàm xuất hiện, kiểm tra vị trí của mồi khi xuất hiện, bị rắn ăn*/
+
 struct KHUNG {};
 /*Hiển thị khung trò chơi khi trò chơi bắt đầu
 bao gồm cả hàm vẽ khung, vẽ rắn, vẽ mồi, xóa rắn, kết thúc game, và giao diện hiện điểm số*/
