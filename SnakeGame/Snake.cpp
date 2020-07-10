@@ -30,9 +30,31 @@ int x, y;
 		return (x == d2.x && y == d2.y);
 	}
 };
-struct RAN {};
+struct RAN {
 /*Biểu diễn rắn
 gồm các hàm định hướng lúc di chuyển, xuất hiện, di chuyển và ăn mồi*/
+    int ChieuDai;
+	vector<DIEM> ToaDo;
+	DIEM duoitruoc;
+	char XacDinhPhuongHuong(DIEM a, DIEM b) {
+		DIEM huong = a - b;
+		if (huong.x == 0 && huong.y == 2)
+			return 'E';
+		else if (huong.x == 0 && huong.y == -2)
+			return 'W';
+		else if (huong.x == 1 && huong.y == 0)
+			return 'S';
+		else
+			return 'N';
+	}
+	void DiThang();
+	void DoiHuong();
+	void DiChuyenThan();
+	void DiChuyenDau();
+	void DiChuyen();
+	void XuatHien();
+	void DaAnMoi();
+};
 struct MOI {};
 /*Biểu diễn vị trí mồi
 gồm các hàm xuất hiện, kiểm tra vị trí của mồi khi xuất hiện, bị rắn ăn*/
