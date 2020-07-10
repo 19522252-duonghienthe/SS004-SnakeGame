@@ -87,11 +87,22 @@ gồm các hàm định hướng lúc di chuyển, xuất hiện, di chuyển v�
 		else
 			DiThang(ToaDo[0], huong);
 	}
-	void DiChuyen();
-	void XuatHien();
+	void DiChuyen(){
+	DiChuyenThan();
+		DiChuyenDau();
+		//cout<<"\a";
+	}
+	void XuatHien(){
+	for (int i(ToaDo.size() - 1), j(1); i >= 0; i--, j += 2) {
+			ToaDo[i].x = 1;
+			ToaDo[i].y = j;
+		}
+	}
 	void DaAnMoi();
 };
-struct MOI {};
+struct MOI {
+    void TaoMoi();
+};
 /*Biểu diễn vị trí mồi
 gồm các hàm xuất hiện, kiểm tra vị trí của mồi khi xuất hiện, bị rắn ăn*/
 
