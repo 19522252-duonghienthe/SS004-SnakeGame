@@ -47,8 +47,30 @@ gồm các hàm định hướng lúc di chuyển, xuất hiện, di chuyển v�
 		else
 			return 'N';
 	}
-	void DiThang();
-	void DoiHuong();
+	void DiThang(DIEM& dau, char huong) {
+		if (huong == 'N')
+			dau.x--;
+		else if (huong == 'S')
+			dau.x++;
+		else if (huong == 'E')
+			dau.y += 2;
+		else
+			dau.y -= 2;
+	}
+	void DoiHuong(int lenh, char& huong) {
+		if ((huong == 'N' || huong == 'S') && (lenh != 72 && lenh != 80)) {
+			if (lenh == 77)
+				huong = 'E';
+			if (lenh == 75)
+				huong = 'W';
+		}
+		else if ((huong == 'E' || huong == 'W') && (lenh != 77 && lenh != 75)) {
+			if (lenh == 72)
+				huong = 'N';
+			if (lenh == 80)
+				huong = 'S';
+		}
+	}
 	void DiChuyenThan();
 	void DiChuyenDau();
 	void DiChuyen();
