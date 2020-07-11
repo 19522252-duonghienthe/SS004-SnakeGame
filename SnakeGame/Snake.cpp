@@ -184,15 +184,24 @@ struct KHUNG {
 		}
 	}
 	void VeMoi() {
-		
+		SetConsoleTextAttribute(h, 14);
+		c = { (short)moi.toado.y,(short)moi.toado.x };
+		SetConsoleCursorPosition(h, c);
+		cout << moian;
 	}
 	void XoaRan() {
+		for (int i = 0; i < ran.ToaDo.size(); i++) {
+			c = { (short)ran.ToaDo[i].y,(short)ran.ToaDo[i].x };
+			SetConsoleCursorPosition(h, c);
+			cout << " ";
+		}
 	}
 	bool GameOver() {
 		
 	}
 	void InDiemSo() {
 	}
+	void VeTroChoi(){}
 };
 // Thêm Một hàm để xóa con trỏ trong màn hình console
 void Nocursortype()
