@@ -87,20 +87,45 @@ gồm các hàm định hướng lúc di chuyển, xuất hiện, di chuyển v�
 		else
 			DiThang(ToaDo[0], huong);
 	}
-	void DiChuyen(){
-	DiChuyenThan();
+	void DiChuyen() {
+		DiChuyenThan();
 		DiChuyenDau();
 		//cout<<"\a";
 	}
-	void XuatHien(){
-	for (int i(ToaDo.size() - 1), j(1); i >= 0; i--, j += 2) {
+	void XuatHien() {
+		for (int i(ToaDo.size() - 1), j(1); i >= 0; i--, j += 2) {
 			ToaDo[i].x = 1;
 			ToaDo[i].y = j;
 		}
 	}
-	void DaAnMoi();
+	void DaAnMoi() {
+		ChieuDai++;
+		ToaDo.resize(ChieuDai);
+		ToaDo[ChieuDai - 1] = duoitruoc;
+	}
+
+
 };
 struct MOI {
+    DIEM toado;
+	bool BiRanAn(vector<DIEM> toadoran) {
+		return (toadoran[0] == toado);
+	}
+	bool MoiTrenRanHoacKhongHopLi(vector<DIEM> toadoran) {
+		for (int i = 0; i < toadoran.size(); i++) {
+			if (toado == toadoran[i])
+				return true;
+			if (i != 0) {
+				int xtrong = (toadoran[i].x + toadoran[i - 1].x) / 2;
+				int ytrong = (toadoran[i].y + toadoran[i - 1].y) / 2;
+				if (toado.x == xtrong && toado.y == ytrong)
+					return true;
+			}
+		}
+		if (toado.y % 2 == 0)
+			return true;
+		return false;
+	}
     void TaoMoi();
 };
 /*Biểu diễn vị trí mồi
