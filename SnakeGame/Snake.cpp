@@ -137,10 +137,63 @@ struct MOI {
 /*Biểu diễn vị trí mồi
 gồm các hàm xuất hiện, kiểm tra vị trí của mồi khi xuất hiện, bị rắn ăn*/
 
-struct KHUNG {};
 /*Hiển thị khung trò chơi khi trò chơi bắt đầu
 bao gồm cả hàm vẽ khung, vẽ rắn, vẽ mồi, xóa rắn, kết thúc game, và giao diện hiện điểm số*/
-
+struct KHUNG {
+	int chieudai, chieurong;
+	RAN ran;
+	MOI moi;
+	int tocdo;
+	char doc = 219;
+	char duoi = 220;
+	char tren = 223;
+	char moian = '$';
+	char dau = 2;
+	char than = 'o';
+	COORD c;   //Luu tru toa do
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);   // Thao tac tren man hinh
+	void Vekhung() {
+		system("cls");
+		SetConsoleTextAttribute(h, 12); //12 la ma mau.
+		for (int i = 1; i < chieudai - 1; i++) {
+			c = { (short)i,0 };
+			SetConsoleCursorPosition(h, c);
+			cout << tren;
+		}
+		for (int i = 0; i < chieurong; i++)
+			for (int j = 0; j < chieudai; j += chieudai - 1) {
+				c = { (short)j,(short)i };
+				SetConsoleCursorPosition(h, c);
+				cout << doc;
+			}
+		for (int i = 1; i < chieudai - 1; i++) {
+			c = { (short)i,(short)(chieurong - 1) };
+			SetConsoleCursorPosition(h, c);
+			cout << duoi;
+		}
+	}
+	void VeRan() {
+		SetConsoleTextAttribute(h, 13);
+		for (int i = 0; i < ran.ToaDo.size(); i++) {
+			c = { (short)ran.ToaDo[i].y,(short)ran.ToaDo[i].x };
+			SetConsoleCursorPosition(h, c);
+			if (i == 0)
+				cout << dau;
+			else
+				cout << than;
+		}
+	}
+	void VeMoi() {
+		
+	}
+	void XoaRan() {
+	}
+	bool GameOver() {
+		
+	}
+	void InDiemSo() {
+	}
+};
 // Thêm Một hàm để xóa con trỏ trong màn hình console
 void Nocursortype()
 {}
