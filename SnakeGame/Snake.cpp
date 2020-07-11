@@ -126,7 +126,13 @@ struct MOI {
 			return true;
 		return false;
 	}
-    void TaoMoi();
+    void TaoMoi(vector<DIEM> toadoran, int chieudai, int chieurong) {
+		srand((unsigned)time(NULL));
+		do {
+			toado.x = rand() % (chieurong - 2) + 1;
+			toado.y = rand() % (chieudai - 2) + 1;
+		} while (MoiTrenRanHoacKhongHopLi(toadoran));
+	}
 };
 /*Biểu diễn vị trí mồi
 gồm các hàm xuất hiện, kiểm tra vị trí của mồi khi xuất hiện, bị rắn ăn*/
