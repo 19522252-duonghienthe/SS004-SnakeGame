@@ -197,9 +197,31 @@ struct KHUNG {
 		}
 	}
 	bool GameOver() {
-		
+		if (ran.ToaDo[0].x <= 0 || ran.ToaDo[0].x >= chieurong - 1 || ran.ToaDo[0].y <= 0 || ran.ToaDo[0].y >= chieudai - 1)
+			return true;
+		for (int i = 4; i < ran.ToaDo.size(); i++)
+			if (ran.ToaDo[0] == ran.ToaDo[i])
+				return true;
+		return false;
 	}
 	void InDiemSo() {
+		int a[4] = { 10,11,12,14 };
+		c = { (short)(chieudai + 2), 3 };
+		SetConsoleTextAttribute(h, a[rand() % 4]);
+		SetConsoleCursorPosition(h, c);
+		cout << "\tWelcome to play!!";
+		c = { (short)(chieudai + 6), 4 };
+		SetConsoleTextAttribute(h, a[rand() % 4]);
+		SetConsoleCursorPosition(h, c);
+		cout << "19522252 & 19522030 & 18521250";
+		c = { (short)(chieudai + 4), 5 };
+		SetConsoleTextAttribute(h, a[rand() % 4]);
+		SetConsoleCursorPosition(h, c);
+		cout << "   SS004";
+		c = { (short)(chieudai + 4), 8 };
+		SetConsoleTextAttribute(h, a[rand() % 4]);
+		SetConsoleCursorPosition(h, c);
+		cout << "Score : " << ran.ToaDo.size() << endl;
 	}
 	void VeTroChoi(){}
 };
