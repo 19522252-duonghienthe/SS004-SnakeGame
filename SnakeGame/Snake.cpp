@@ -223,7 +223,32 @@ struct KHUNG {
 		SetConsoleCursorPosition(h, c);
 		cout << "Score : " << ran.ToaDo.size() << endl;
 	}
-	void VeTroChoi(){}
+	void VeTroChoi() {
+		ran.XuatHien();
+		moi.TaoMoi(ran.ToaDo, chieudai, chieurong);
+		VeMoi();
+		do {
+			InDiemSo();
+			VeRan();
+			Sleep(tocdo);
+			XoaRan();
+			ran.DiChuyen();
+			if (moi.BiRanAn(ran.ToaDo)) {
+				ran.DaAnMoi();
+				//Beep(1000,10);
+				moi.TaoMoi(ran.ToaDo, chieudai, chieurong);
+				VeMoi();
+			}
+		} while (!GameOver());
+		c = { (short)(chieudai + 4), 12 };
+		SetConsoleCursorPosition(h, c);
+		string thua = "GAME OVER!!";
+		for (int i = 0; i < thua.length(); i++) {
+			SetConsoleTextAttribute(h, i < 6 ? i + 9 : (i % 6) + 9);
+			cout << thua[i];
+		}
+
+	}
 };
 // Thêm Một hàm để xóa con trỏ trong màn hình console
 void Nocursortype()
