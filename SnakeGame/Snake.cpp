@@ -259,9 +259,26 @@ void Nocursortype()
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &Info);
 }
 // Hàm nhập tùy chọn khi vào game
-void NhapCacYeuCau()
-{}
+void NhapCacYeuCau(KHUNG& khung)
+{
+	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(h, 14);
+	cout << "Press the length and width of the wall (recommend: 50 25): ";
+	cin >> khung.chieudai >> khung.chieurong;
+	SetConsoleTextAttribute(h, 10);
+	cout << "Press the length of the snake (grater than 2): ";
+	cin >> khung.ran.ChieuDai;
+	SetConsoleTextAttribute(h, 11);
+	cout << "Press the break time of the snake (ms, recommend: 200) : ";
+	cin >> khung.tocdo;
+	Nocursortype();
+	SetConsoleTextAttribute(h, 12);
+	cout << "Press any key to play...";
+	_getch();
+	system("cls");
+}
 int main()
 {
+	
 	return 0;
 }
