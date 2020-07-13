@@ -279,6 +279,17 @@ void NhapCacYeuCau(KHUNG& khung)
 }
 int main()
 {
-	
+	KHUNG khung;
+	NhapCacYeuCau(khung);
+	khung.Vekhung();
+	khung.ran.ToaDo.resize(khung.ran.ChieuDai);
+	khung.VeTroChoi();
+	_getch();
+	system("cls");
+	string s = "Lew lew!";
+	for (int a[8] = { 10,11,12,14,11,10,14,12 }, i = 0; i < s.length(); i++) {
+		SetConsoleTextAttribute(khung.h, a[i % 8]);
+		cout << s[i];
+	}
 	return 0;
 }
