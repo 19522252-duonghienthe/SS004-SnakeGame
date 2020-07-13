@@ -143,6 +143,7 @@ struct KHUNG {
 	int chieudai, chieurong;
 	RAN ran;
 	MOI moi;
+	string level;
 	int tocdo;
 	char doc = 219;
 	char duoi = 220;
@@ -209,19 +210,23 @@ struct KHUNG {
 		c = { (short)(chieudai + 2), 3 };
 		SetConsoleTextAttribute(h, a[rand() % 4]);
 		SetConsoleCursorPosition(h, c);
-		cout << "\tWelcome to play!!";
-		c = { (short)(chieudai + 6), 4 };
+		cout << "\t  Welcome to play!!";
+		c = { (short)(chieudai + 2), 4 };
 		SetConsoleTextAttribute(h, a[rand() % 4]);
 		SetConsoleCursorPosition(h, c);
 		cout << "19522252 & 19522030 & 18521250";
 		c = { (short)(chieudai + 4), 5 };
 		SetConsoleTextAttribute(h, a[rand() % 4]);
 		SetConsoleCursorPosition(h, c);
-		cout << "   SS004";
+		cout << "      Goodluck to you\n\n\n\n\n\n";
 		c = { (short)(chieudai + 4), 8 };
 		SetConsoleTextAttribute(h, a[rand() % 4]);
 		SetConsoleCursorPosition(h, c);
-		cout << "Score : " << ran.ToaDo.size() << endl;
+		cout << "        LEVEL: " << level << endl;
+		c = { (short)(chieudai + 4), 10 };
+		SetConsoleTextAttribute(h, a[rand() % 4]);
+		SetConsoleCursorPosition(h, c);
+		cout << "        Score : " << ran.ToaDo.size() - 4 << endl;
 	}
 	void VeTroChoi() {
 		ran.XuatHien();
@@ -242,7 +247,7 @@ struct KHUNG {
 		} while (!GameOver());
 		c = { (short)(chieudai + 4), 12 };
 		SetConsoleCursorPosition(h, c);
-		string thua = "GAME OVER!!";
+		string thua = "        GAME OVER!!";
 		for (int i = 0; i < thua.length(); i++) {
 			SetConsoleTextAttribute(h, i < 6 ? i + 9 : (i % 6) + 9);
 			cout << thua[i];
@@ -263,17 +268,36 @@ void NhapCacYeuCau(KHUNG& khung)
 {
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(h, 14);
-	cout << "Press the length and width of the wall (recommend: 50 25): ";
-	cin >> khung.chieudai >> khung.chieurong;
+	khung.chieudai = 80;
+	khung.chieurong = 30;
 	SetConsoleTextAttribute(h, 10);
-	cout << "Press the length of the snake (grater than 2): ";
-	cin >> khung.ran.ChieuDai;
+	khung.ran.ChieuDai = 4;
 	SetConsoleTextAttribute(h, 11);
-	cout << "Press the break time of the snake (ms, recommend: 200) : ";
-	cin >> khung.tocdo;
+	cout << "\n\n\n\n\n\n\n                                                 Choose level:";
+	cout << "\n                                                     1.Hard.";
+	cout << "\n                                                     2.Medium.";
+	cout << "\n                                                     3.Easy\n";
+	cout << "                                                        ";
+	int n;
+	cin >> n;
+	if (n == 1)
+	{
+		khung.level = "Hard";
+		khung.tocdo = 70;
+	}
+	else if (n == 2)
+	{
+		khung.level = "Medium";
+		khung.tocdo = 150;
+	}
+	else if (n == 3)
+	{
+		khung.level = "Easy";
+		khung.tocdo = 300;
+	}
 	Nocursortype();
 	SetConsoleTextAttribute(h, 12);
-	cout << "Press any key to play...";
+	cout << "                                            Press any key to play...";
 	_getch();
 	system("cls");
 }
