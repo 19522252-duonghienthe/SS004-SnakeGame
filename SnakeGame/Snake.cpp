@@ -252,12 +252,7 @@ struct KHUNG {
 };
 // Thêm Một hàm để xóa con trỏ trong màn hình console
 void Nocursortype()
-{
-	CONSOLE_CURSOR_INFO Info;
-	Info.bVisible = FALSE;
-	Info.dwSize = 20;
-	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &Info);
-}
+{}
 // Hàm nhập tùy chọn khi vào game
 void NhapCacYeuCau()
 {}
